@@ -1,0 +1,1 @@
+this is a project with .net as backend and react as frontend
