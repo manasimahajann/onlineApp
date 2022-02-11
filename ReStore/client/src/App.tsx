@@ -1,12 +1,30 @@
- const products = [
-   {
-     name:'pro1', price:100.00
-   },   
-   {
-    name:'pro2', price:120.00
-   }
- ]
+ import {useState} from "react";
+ 
+//  const products = [
+//    {
+//      name:'pro1', price:100.00
+//    },   
+//    {
+//     name:'pro2', price:120.00
+//    }
+ //]
+
 function App() {
+  const [products, setProducts] = useState([ 
+    {
+      name:'pro1', price:100.00
+    },   
+    {
+     name:'pro2', price:120.00
+    }
+  ]);
+
+  function addProduct(){
+    setProducts(prevState => [...prevState, 
+      {name: "pro" + (prevState.length+1), price: (prevState.length*100)+100}]
+      )
+  }
+
   return (
     <div> 
       <h1>Re-Store</h1>
@@ -17,6 +35,8 @@ function App() {
           )
         )}
       </ul>
+      
+      <button onClick={addProduct}>Add Product</button>
     </div>
   );
 }
