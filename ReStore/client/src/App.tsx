@@ -1,4 +1,4 @@
- import {useState} from "react";
+ import {useState, useEffect} from "react";
  
 //  const products = [
 //    {
@@ -18,6 +18,12 @@ function App() {
      name:'pro2', price:120.00
     }
   ]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/products')
+      .then(response => response.json())
+      .then(data => setProducts(data))
+  }, [])
 
   function addProduct(){
     setProducts(prevState => [...prevState, 
