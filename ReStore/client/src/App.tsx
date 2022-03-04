@@ -1,4 +1,5 @@
- import {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
+import { Product } from "./product";
  
 //  const products = [
 //    {
@@ -10,14 +11,7 @@
  //]
 
 function App() {
-  const [products, setProducts] = useState([ 
-    {
-      name:'pro1', price:100.00
-    },   
-    {
-     name:'pro2', price:120.00
-    }
-  ]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     fetch('http://localhost:5000/api/products')
@@ -27,9 +21,15 @@ function App() {
 
   function addProduct(){
     setProducts(prevState => [...prevState, 
-      {name: "pro" + (prevState.length+1), price: (prevState.length*100)+100}]
-      )
-  }
+      {
+        id: prevState.length + 101,
+        name: "pro" + (prevState.length+1), 
+        price: (prevState.length*100)+100,
+        description: "some description", 
+        pictureUrl: "http://picsum.photos/200",
+        brand: "Some brand"
+      }])
+      }
 
   return (
     <div> 
