@@ -3,12 +3,17 @@ import Catalog from "../../feature/catalog/catalog";
 import Header from "./Header";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useState } from "react";
+import { Route } from "react-router-dom";
+import HomePage from "../../feature/home/HomePage";
+import ContactPage from "../../feature/contact/ContactPage";
+import AboutPage from "../../feature/about/AboutPage";
+import ProductDetails from "../../feature/catalog/ProductDetails";
 
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const paletteType = darkMode ? 'dark' : 'light';
-  const darkTheme = createTheme({
+  const theme = createTheme({
     palette: {
       mode: paletteType,
       background:{
@@ -21,11 +26,15 @@ function App() {
     setDarkMode(!darkMode);
   }
   return (
-    <ThemeProvider theme={darkTheme}> 
+    <ThemeProvider theme={theme}> 
     <CssBaseline/>
       <Header darkMode = {darkMode} handleThemeChange = {handleThemeChange}/>
       <Container>
-        <Catalog /> 
+        <Route exact path = '/'  component={HomePage}  /> 
+        <Route exact path = '/contact' component={ContactPage} /> 
+        <Route exact path = '/about' component={AboutPage} /> 
+        <Route exact path = '/catalog' component={Catalog} /> 
+        <Route exact path = '/catalog/:id' component={ProductDetails} /> 
       </Container>
  
     </ThemeProvider>
