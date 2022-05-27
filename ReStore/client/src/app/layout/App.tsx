@@ -4,10 +4,11 @@ import Header from "./Header";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useState } from "react";
 import { Route } from "react-router-dom";
-import HomePage from "../../feature/home/HomePage";
+import ProductDetails from "../../feature/catalog/ProductDetails";
+
 import ContactPage from "../../feature/contact/ContactPage";
 import AboutPage from "../../feature/about/AboutPage";
-import ProductDetails from "../../feature/catalog/ProductDetails";
+import HomePage from "../../feature/home/HomePage";
 
 
 function App() {
