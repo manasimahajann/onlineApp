@@ -11,7 +11,7 @@ const responseBody = (response : AxiosResponse) => response.data;
 axios.interceptors.response.use(response => {
     return response
 }, (error: AxiosError) => {
-    const {data, status} = error.response!;
+    const {data, status} = error.response as any;
     switch (status) {
         case 400:
             toast.error(data.title); 

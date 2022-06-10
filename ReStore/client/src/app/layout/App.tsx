@@ -26,14 +26,14 @@ function App() {
       }
     },
   })  
-  
+
   
   function handleThemeChange(){
     setDarkMode(!darkMode);
   }
   return (
     <ThemeProvider theme={theme}> 
-    <ToastContainer position= 'bottom-right' hideProgressBar />
+    <ToastContainer position= 'bottom-right' hideProgressBar theme='colored'/>
     <CssBaseline/>
       <Header darkMode = {darkMode} handleThemeChange = {handleThemeChange}/>
       <Container>
